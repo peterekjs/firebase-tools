@@ -1,0 +1,67 @@
+{
+  "name": "@peterek/firebase-tools",
+  "version": "0.0.0",
+  "description": "Set of handy tools for Firebase based projects",
+  "license": "MIT",
+  "keywords": [
+    "javascript",
+    "typescript",
+    "firebase",
+    "rxjs"
+  ],
+  "author": {
+    "name": "Jiri Peterek",
+    "email": "jiri@peterek.net"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peterekjs/firebase-tools.git"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "types": "./dist/types/index.d.ts",
+  "typescript": {
+    "definition": "./dist/types/index.d.ts"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@peterek/helpers": "^0.1.0",
+    "assert-ts": "^0.3.4"
+  },
+  "peerDependencies": {
+    "@firebase/firestore": "^3.4.7"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-typescript": "^8.3.1",
+    "@types/ramda": "^0.28.8",
+    "chokidar": "^3.5.3",
+    "rollup": "^2.70.1",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.6.3"
+  },
+  "bugs": {
+    "url": "https://github.com/peterekjs/firebase-tools/issues"
+  },
+  "homepage": "https://github.com/peterekjs/firebase-tools#readme"
+}
