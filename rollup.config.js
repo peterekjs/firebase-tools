@@ -26,7 +26,8 @@ export default {
     /^@firebase\//,
     /^@peterek\//,
     'assert-ts',
-    'ramda'
+    'ramda',
+    /^rxfire\//,
   ],
   plugins: [
     isProduction ? del({ targets: 'dist/*' }) : null,

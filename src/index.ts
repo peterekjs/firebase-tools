@@ -9,3 +9,4 @@ export type {
   OrderedItem,
   WithDocumentReference
 } from './models'
+export { collectionData, docData } from './rxfire'
