@@ -6,8 +6,7 @@ export const RXFIRE_ID_MAPPING = {
 }
 
 export const collectionData = <
-  D extends DocumentData,
-  Q extends Query<D>
->(query: Q) => _collectionData<D>(query, RXFIRE_ID_MAPPING)
+  D extends DocumentData
+>(query: Query<D>) => _collectionData<D>(query, RXFIRE_ID_MAPPING)
 
 export { docData } from 'rxfire/firestore'

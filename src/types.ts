@@ -16,7 +16,8 @@ export interface WithDocumentReference<T = DocumentData> {
  * Item stored on Firestore
  */
 export interface FirebaseItem extends CollectionItem {
-  created: Timestamp
+  $created: Timestamp
+  $updated?: Timestamp
 }
 
 /**
@@ -27,5 +28,6 @@ export interface ClientItem<T = DocumentData>
     CollectionItem,
     WithDocumentReference<T>
 {
-  created: Date
+  $created: Date
+  $updated?: Date
 }
