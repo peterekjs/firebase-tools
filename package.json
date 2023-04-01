@@ -46,7 +46,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@peterek/helpers": "^1.0.1",
+    "@peterek/helpers": "^1.0.2",
     "rxfire": "^6.0.3"
   },
   "peerDependencies": {
