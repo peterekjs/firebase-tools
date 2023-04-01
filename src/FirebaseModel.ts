@@ -3,10 +3,9 @@ import type {
   DocumentReference,
   QueryDocumentSnapshot,
 } from '@firebase/firestore'
-import { Timestamp } from '@firebase/firestore'
-import assert from 'assert-ts'
-import { propErrors } from './errors'
 import type { ClientItem } from './types'
+import { assertDocumentData } from './firestore'
+
 
 export abstract class FirebaseModel implements ClientItem {
   readonly id!: string
@@ -15,11 +14,7 @@ export abstract class FirebaseModel implements ClientItem {
   readonly $updated?: Date
 
   constructor(data: DocumentData, snapshot: QueryDocumentSnapshot) {
-    assert(
-      data.$created instanceof Timestamp,
-      propErrors.timestamp('$created'),
-      data
-    )
+    assertDocumentData(data)
 
     const defineDate = (prop: string) => Object.defineProperty(this, prop, {
       value: new Date(data[prop].toMillis()),

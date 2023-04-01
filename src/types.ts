@@ -1,21 +1,21 @@
 import type { DocumentData, DocumentReference, Timestamp } from '@firebase/firestore'
 
-export interface CollectionItem {
+export type CollectionItem = {
   id: string
 }
 
-export interface OrderedItem {
+export type OrderedItem = {
   order: number
 }
 
-export interface WithDocumentReference<T = DocumentData> {
+export type WithDocumentReference<T = DocumentData> = {
   ref?: DocumentReference<T>
 }
 
 /**
  * Item stored on Firestore
  */
-export interface FirebaseItem extends CollectionItem {
+export type FirebaseItem = CollectionItem & {
   $created: Timestamp
   $updated?: Timestamp
 }
@@ -23,10 +23,7 @@ export interface FirebaseItem extends CollectionItem {
 /**
  * Parsed item on client side
  */
-export interface ClientItem<T = DocumentData>
-  extends
-    CollectionItem,
-    WithDocumentReference<T>
+export type ClientItem<T = DocumentData> = CollectionItem & WithDocumentReference<T> &
 {
   $created: Date
   $updated?: Date
