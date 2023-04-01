@@ -17,53 +17,47 @@
     "type": "git",
     "url": "git+https://github.com/peterekjs/firebase-tools.git"
   },
-  "engines": {
-    "node": ">=16.0.0"
-  },
-  "files": [
-    "dist/*",
-    "src/*"
-  ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "default": "./dist/index.mjs"
-    }
-  },
-  "types": "./dist/types/index.d.ts",
-  "typescript": {
-    "definition": "./dist/types/index.d.ts"
-  },
-  "sideEffects": false,
-  "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "prepublishOnly": "npm run build"
-  },
-  "dependencies": {
-    "@peterek/helpers": "^0.1.0",
-    "assert-ts": "^0.3.4",
-    "rxfire": "^6.0.3"
-  },
-  "peerDependencies": {
-    "@firebase/firestore": "^3.4.7",
-    "rxjs": "^7.5.5"
-  },
-  "devDependencies": {
-    "@babel/preset-env": "^7.16.11",
-    "@rollup/plugin-babel": "^5.3.1",
-    "@rollup/plugin-typescript": "^8.3.1",
-    "@types/ramda": "^0.28.8",
-    "chokidar": "^3.5.3",
-    "rollup": "^2.70.1",
-    "rollup-plugin-delete": "^2.0.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "typescript": "^4.6.3"
-  },
   "bugs": {
     "url": "https://github.com/peterekjs/firebase-tools/issues"
   },
-  "homepage": "https://github.com/peterekjs/firebase-tools#readme"
+  "homepage": "https://github.com/peterekjs/firebase-tools#readme",
+  "sideEffects": false,
+  "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "main": "./dist/firebase-tools.cjs",
+  "module": "./dist/firebase-tools.js",
+  "exports": {
+    ".": {
+      "import": "./dist/firebase-tools.js",
+      "require": "./dist/firebase-tools.cjs"
+    },
+    "./src/*": "./src/*"
+  },
+  "types": "./dist/index.d.ts",
+  "typescript": {
+    "definition": "./dist/index.d.ts"
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@peterek/helpers": "^1.0.1",
+    "rxfire": "^6.0.3"
+  },
+  "peerDependencies": {
+    "@firebase/firestore": "^3.10.0",
+    "rxjs": "^7.8.0"
+  },
+  "devDependencies": {
+    "@peterek/rollup-externals": "^1.0.0",
+    "@types/ramda": "^0.28.23",
+    "typescript": "^5.0.3",
+    "vite": "^4.2.1",
+    "vite-plugin-dts": "^2.1.0"
+  }
 }
