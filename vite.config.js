@@ -1,8 +1,7 @@
-import { resolve } from 'path'
-import { defineConfig } from 'vite'
+import { resolve } from 'node:path'
+import { defineConfig } from 'vitest/config'
 import dts from 'vite-plugin-dts'
-import { getExternals } from '@peterek/rollup-externals'
-import { dependencies, peerDependencies } from './package.json'
+import pkg from './package.json' assert { type: 'json' }
 
 export default defineConfig({
   build: {
@@ -12,11 +11,14 @@ export default defineConfig({
       formats: ['cjs', 'es']
     },
     rollupOptions: {
-      external: getExternals(dependencies, peerDependencies)
+      external: [...new Set([...Object.keys(pkg.dependencies), ...Object.keys(pkg.peerDependencies)])].map(x => new RegExp(`^${x}`))
     },
     sourcemap: true,
     target: 'esnext',
     minify: true
   },
-  plugins: [dts()]
+  plugins: [dts()],
+  test: {
+    environment: 'node'
+  },
 })
